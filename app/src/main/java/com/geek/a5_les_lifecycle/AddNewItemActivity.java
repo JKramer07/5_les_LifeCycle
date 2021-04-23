@@ -21,13 +21,11 @@ public class AddNewItemActivity extends AppCompatActivity {
         editText = findViewById(R.id.task_title_et);
         btnAdd = findViewById(R.id.add_new_task_btn);
 
-        btnAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(AddNewItemActivity.this, MainActivity.class);
-                intent.putExtra(KEY_ADD_BUTTON, editText.getText().toString());
-                startActivity(intent);
-            }
+        btnAdd.setOnClickListener(v -> {
+            Intent intent = new Intent();
+            intent.putExtra(KEY_ADD_BUTTON, editText.getText().toString());
+            setResult(RESULT_OK, intent);
+            finish();
         });
     }
 }
